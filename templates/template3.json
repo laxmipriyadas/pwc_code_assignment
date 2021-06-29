@@ -1,0 +1,84 @@
+[
+  {
+    "Key": "Tin",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "TIN :",
+    "end_delimiter": "GSTIN",
+    "foundkeyfor": "Tin "
+  },
+  {
+    "Key": "Gst",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "GSTIN: ",
+    "end_delimiter": "SAC",
+    "foundkeyfor": "gst "
+  },
+  {
+    "Key": "SAC",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "SAC :",
+    "end_delimiter": "Source",
+    "foundkeyfor": "SAC"
+  },
+  {
+    "Key": "Source",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Source",
+    "end_delimiter": "Table No"
+  },
+  {
+    "Key": "Table No",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Table No",
+    "end_delimiter": "KOT's"
+  },
+  {
+    "Key": "KOT's",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "KOT's",
+    "end_delimiter": "Order Time"
+  },
+
+  {
+    "Key": "Date",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Order Time: ",
+    "end_delimiter": "Invoice No"
+  },
+  {
+    "Key": "Invoice No",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Invoive No",
+    "end_delimiter": " Pax Size :"
+  },
+  {
+    "Key": "Server Name",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Server Name : ",
+    "end_delimiter": "Item"
+  },
+  {
+    "Key": "products",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Amount",
+    "end_delimiter": "Subtotal"
+  },
+  {
+    "Key": "Total Amount",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Nat Payable ",
+    "end_delimiter": "Rs.",
+    "foundkeyfor": "total_amount"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "Key": "Date",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Inv. No",
+    "end_delimiter": "",
+    "customPositiontoTake": 1
+  },
+  {
+    "Key": "TelPhone",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Ph:",
+    "end_delimiter": "",
+    "foundkeyfor": "ph:"
+  },
+  {
+    "Key": "TinNumber",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "TIN NO.",
+    "end_delimiter": ""
+  },
+  {
+    "Key": "GST",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "GST:",
+    "end_delimiter": "",
+    "foundkeyfor": "gst"
+  },
+  {
+    "Key": "InvoiceNumber",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Inv. No:",
+    "end_delimiter": "",
+    "foundkeyfor": "inv"
+  },
+  {
+    "Key": "Address",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Invoice",
+    "end_delimiter": ""
+  },
+  {
+    "Key": "VAT",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "",
+    "end_delimiter": "Total",
+    "customPositiontoTake": -1
+  },
+  {
+    "Key": "Total",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Net",
+    "end_delimiter": "",
+    "customPositiontoTake": 2
+  },
+  {
+    "Key": "products",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Net",
+    "end_delimiter": "Rs.",
+    "customPositiontoTake": -2
+  }
+]

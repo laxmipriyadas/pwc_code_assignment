@@ -1,0 +1,1081 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: bira-node-services
+  description: bira-node-services
+basePath: /api/v1
+consumes:
+  - application/json
+  - x-user-token
+produces:
+  - application/json
+paths:
+  /sync:
+    get:
+      tags:
+        - DB-sync
+      description: Sync DB with models
+      responses:
+        200:
+          description: creates tables and constraints with look up data
+
+  /ping:
+    get:
+      security: []
+      tags:
+        - Health Check
+      description: Fetch all
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+      responses:
+        200:
+          description: Returns pong
+  # API to Upload s3.
+  /image/upload:
+    post:
+      operationId: "imageupload"
+      consumes:
+        - "multipart/form-data"
+      tags:
+        - Image Upload
+      description: Image uploaded on S3 bucket.
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+          description: user authorization token
+          required: true
+
+        - in: formData
+          name: mobile
+          type: string
+          description: user mobile
+          required: true
+        - in: formData
+          name: cap_device_id
+          type: string
+          required: true
+        - in: formData
+          name: image
+          type: file
+      responses:
+        200:
+          description: Image Uploaded.
+        400:
+          description: Bad request
+  #receipts
+  /receipts:
+    get:
+      tags:
+        - Receipts
+      description: Fetch all Customer Receipts
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: is_flagged
+          type: integer
+          description: Ticket Flagged or not.
+
+        - in: query
+          name: is_flagged_open
+          type: integer
+          description: Ticket Flagged or not.  
+
+        - in: query
+          name: limit
+          type: integer
+          description: Limit for per page.
+
+        - in: query
+          name: offset
+          type: integer
+          description: The number of items to skip before starting to collect the result set
+
+        - in: query
+          name: customer_external_id
+          type: integer
+          description: All user receipts.
+
+        - in: query
+          name: status_id
+          type: integer
+          description: Particular status value.
+
+        - in: query
+          name: receipt_id
+          type: integer
+          description: Particular receipt value.    
+      responses:
+        200:
+          description: Returns all Customer Receipts.
+
+  #login
+  /login:
+    post:
+      tags:
+        - Login
+      description: Login
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              user_name:
+                type: string
+                required: true
+                format: email
+              hash_password:
+                type: string
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+  #refreshtoken
+  /refreshtoken:
+    post:
+      tags:
+        - RefreshToken
+      description: RefreshToken
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+    #logout
+  /logout:
+    post:
+      tags:
+        - Logout
+      description: Logout
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+  #/user/add
+  /users/add:
+    post:
+      tags:
+        - User
+      description: Create User
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              user_name:
+                type: string
+                required: true
+              password:
+                type: string
+                required: true
+              roll_id:
+                type: integer
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+  # /user/edit
+  /users/edit:
+    post:
+      tags:
+        - User
+      description: Edit User
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: integer
+                required: true
+              user_name:
+                type: string
+                required: false 
+              password:
+                type: string
+                required: false
+              roll_id:
+                type: integer
+                required: false
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+  #/user/delete
+  /users/delete:
+    delete:
+      tags:
+        - User
+      description: Delete User
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: integer
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+  #/user/active/deactive
+  /users/active_deactive:
+    post:
+      tags:
+        - User
+      description: Active Deactive User
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: integer
+                required: true
+              is_active:
+                type: boolean
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: User not found
+
+  #UserLists
+  /users:
+    get:
+      tags:
+        - User
+      description: Fetch all Users
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: limit
+          type: integer
+          description: Limit for per page.
+
+        - in: query
+          name: user_id
+          type: integer
+          description: Specific User Details
+      responses:
+        200:
+          description: Returns all Users
+
+  # /receipts/edit
+  /receipts/edit:
+    post:
+      tags:
+        - Receipts
+      description: Receipts Edit
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_id:
+                type: integer
+                required: true
+              receipt_number:
+                type: string
+                required: true
+              store_id:
+                type: integer
+                required: true
+              receipt_txn_date:
+                type: string
+                required: true
+              total_bill_amount:
+                type: number
+                #type: float
+                #example: 10.2
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Receipt not found
+
+  #ProductLists
+  /products:
+    get:
+      tags:
+        - Product
+      description: Product Lists
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: limit
+          type: integer
+          description: Limit for per page.
+
+        - in: query
+          name: product_id
+          type: integer
+          description: Specific product Details
+      responses:
+        200:
+          description: Returns all Products
+
+  #StoreLists
+  /stores:
+    get:
+      tags:
+        - Store
+      description: Store Lists
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: limit
+          type: integer
+          description: Limit for per page.
+
+        - in: query
+          name: offset
+          type: integer
+          description: The number of items to skip before starting to collect the result set  
+
+        - in: query
+          name: store_id
+          type: integer
+          description: Specific Store Details
+      responses:
+        200:
+          description: Returns all stores
+#/product/add
+  /products/add:
+    post:
+      tags:
+        - Product
+      description: Add Product
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_id:
+                type: integer
+                required: true
+              custom_fields: 
+                type: object
+                properties:
+                  field:
+                    type: array
+                    items:
+                      properties:
+                        product_id:
+                          type: integer
+                          required: true
+                        quantity:
+                          type: integer
+                          required: true            
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Procut not found      
+#/product/update
+  /products/update:
+    post:
+      tags:
+        - Product
+      description: update Product
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_item_id:
+                type: integer
+                required: true 
+              product_id:
+                type: integer
+                required: false        
+              quantity:
+                type: integer
+                required: false            
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Procut not found                
+
+          
+ #/products/delete
+  /products/delete:
+    delete:
+      tags:
+        - Product
+      description: Delete Product
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true 
+          
+        - in: query
+          name: product_id
+          type: integer
+          required: true       
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Product not found           
+
+
+  # /receipts/approve
+  /receipts/approve:
+    post:
+      tags:
+        - Receipts
+      description: Receipts approve
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_id:
+                type: integer
+                required: true
+              is_approve:
+                type: boolean
+                required: true
+              notes:
+                type: string
+                required: true  
+
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Receipt not found
+ # /receipts/resolve
+  /receipts/resolve:
+    post:
+      tags:
+        - Receipts
+      description: Receipts resolve
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_id:
+                type: integer
+                required: true
+              is_resolve:
+                type: boolean
+                required: true
+              notes:
+                type: string
+                required: true  
+
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Receipt not found
+# /receipts/return
+  /receipts/return:
+    post:
+      tags:
+        - Receipts
+      description: Receipts approve
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              receipt_id:
+                type: integer
+                required: true
+      responses:
+        200:
+          description: Returns pong
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Receipt not found
+
+  #ReceiptsCount
+  /receipts/count:
+    get:
+      tags:
+        - Receipts
+      description: Number of Receipts
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+      responses:
+        200:
+          description: Return Number of Receipts
+
+  #Searched Rseceipts
+  /receipts/search:
+    get:
+      tags:
+        - Receipts
+      description: Searched Receipts
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: customer_external_id
+          type: string
+          required: true
+
+        - in: query
+          name: is_flagged
+          type: integer
+          required: false  
+        
+        - in: query
+          name: is_flagged_open
+          type: integer
+          required: false 
+        
+        - in: query
+          name: status_id
+          type: integer
+          required: false    
+      responses:
+        200:
+          description: Returns all Customer Receipts.
+
+ #Customer Details
+  /receipts/customer_deatils:
+    get:
+      tags:
+        - Receipts
+      description: Customer Details
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: receipt_id
+          type: integer
+          required: true  
+
+      responses:
+        200:
+          description: Return Customer Details   
+
+#ItemLists Based on Receipt ID
+  /receipts/item_list:
+    get:
+      tags:
+        - Receipts
+      description:  Receipts Item lists.
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: receipt_id
+          type: integer
+      responses:
+        200:
+          description: Returns all Items for specific Receipt.
+
+#/templates/add
+  /templates/add:
+    post:
+      tags:
+        - Template
+      description: Add new Template
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+        - in: body
+          name: body
+          schema:
+            type: object
+            properties:
+              template_name:
+                type: string
+                required: true         
+      responses:
+        200:
+          description: Returns 
+        400:
+          description: bad input params
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: Permission denied.
+        404:
+          description: Template not found      
+#TemplateLists
+  /templates:
+    get:
+      tags:
+        - Template
+      description: Template Lists
+      parameters:
+        - in: header
+          name: app-key
+          type: string
+          required: true
+
+        - in: header
+          name: app-secret
+          type: string
+          required: true
+
+        - in: header
+          name: auth-token
+          type: string
+          required: true
+
+        - in: query
+          name: limit
+          type: integer
+          description: Limit for per page.
+
+        - in: query
+          name: offset
+          type: integer
+          description: The number of items to skip before starting to collect the result set  
+
+        - in: query
+          name: template_id
+          type: integer
+          description: Specific Template Details
+      responses:
+        200:
+          description: Returns all tempalates

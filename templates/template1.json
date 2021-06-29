@@ -1,0 +1,54 @@
+[
+  {
+    "Key": "Ven Name",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": ": ",
+    "end_delimiter": "Vend Type:"
+  },
+  {
+    "Key": "Vend Type",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "",
+    "end_delimiter": "Date"
+  },
+  {
+    "Key": "Date",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Inv. No",
+    "end_delimiter": "Invoice"
+  },
+  {
+    "Key": "Invoice No",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Invoice No: ",
+    "end_delimiter": "S no.",
+    "foundkeyfor": "inv"
+  },
+  {
+    "Key": "products",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "(Rs)",
+    "end_delimiter": "Total Bottle"
+  },
+
+  {
+    "Key": "Total Bottles",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Total Bottles Count: ",
+    "end_delimiter": "Total"
+  },
+  {
+    "Key": "Total Amount",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Total Amount(Rs): ",
+    "end_delimiter": " ",
+    "foundkeyfor": "total_amount"
+  }
+]

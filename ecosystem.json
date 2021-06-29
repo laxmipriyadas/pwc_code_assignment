@@ -1,0 +1,26 @@
+{
+  "apps": [
+    {
+      "name": "bira-node-services",
+      "script": "npm run dev",
+      "watch": false,
+      "error_file": "/var/log/pm2_log/bira_api_log/error.log",
+      "out_file": "/var/log/pm2_log/bira_api_log/output.log",
+      "env": {
+        "NODE_ENV": "default"
+      },
+      "env_dev": {
+        "PORT": 9000,
+        "NODE_ENV": "development"
+      },
+      "env_prod": {
+        "PORT": 9000,
+        "NODE_ENV": "production"
+      },
+      "env_dev2": {
+        "PORT": 9000,
+        "NODE_ENV": "local_development"
+      }
+    }
+  ]
+}

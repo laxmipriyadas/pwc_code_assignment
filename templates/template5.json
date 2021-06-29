@@ -1,0 +1,62 @@
+[
+    {
+        "Key":"Date",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "Date:",
+        "end_delimiter": ""
+        
+    },
+    {
+        "Key":"TelPhone",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "TEL.",
+        "end_delimiter": ""
+    },
+    {
+        "Key":"TinNumber",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "TIN NO.",
+        "end_delimiter": ""
+    },
+    {
+        "Key":"InvoiceNumber",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "Retail Invoice",
+        "end_delimiter": "Date:"
+    },
+    {
+        "Key":"Address",
+        "line_no_start": 1,
+        "line_no_end": null,
+        "start_delimiter": "",
+        "end_delimiter": "TEL."
+    },
+    {
+        "Key":"VAT",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "",
+        "end_delimiter": "Total",
+        "customPositiontoTake":-1
+    },
+    {
+        "Key":"Total",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "Total",
+        "end_delimiter": "",
+        "customPositiontoTake":2
+    },
+    {
+        "Key":"products",
+        "line_no_start": null,
+        "line_no_end": null,
+        "start_delimiter": "Amount",
+        "end_delimiter": "Rs.",
+        "customPositiontoTake":-2
+    }
+]

@@ -1,0 +1,40 @@
+{
+  "VN": {
+    "isprint_base_url": "https://ar2demo.accessreal.com",
+    "isprint_app_key": "SecretKey_253a0680c4f54be986ce567fe5e59c62",
+    "isprint_app_id": "0678f9bc59184b3a9d269f6d7f447ceb",
+    "capillary_brand": "ABBOTTDEMO",
+    "capillary_base_url": "https://apac-apigateway.capillarytech.com",
+    "capillary_url": "https://apac.api.capillarytech.com",
+    "till_id": "abbottvntemppage",
+    "till_password": "85a4447a3b438fbb6e33e5c0428460d3",
+    "intouch": "https://intouch.capillary.co.in",
+    "intouch_auth": "Basic YWJib3R0cGh0ZW1wcGFnZTo4NWE0NDQ3YTNiNDM4ZmJiNmUzM2U1YzA0Mjg0NjBkMw==",
+    "semilac_series_list": "9072,9073,9074,9075",
+    "grow_series_list": "9076,9077,9078,9079"
+  },
+  "PH": {
+    "isprint_base_url": "https://ar2demo.accessreal.com",
+    "isprint_app_key": "SecretKey_3a074d644afb48b5ad7a7fd002c44033",
+    "isprint_app_id": "cd32ccd81e0a48c9b0360becbf4b8baa",
+    "capillary_brand": "ABBOTTDEMO",
+    "capillary_base_url": "https://apac-apigateway.capillarytech.com",
+    "capillary_url": "https://apac.api.capillarytech.com",
+    "till_id": "abbottphtemppage",
+    "till_password": "85a4447a3b438fbb6e33e5c0428460d3",
+    "intouch": "https://intouch.capillary.co.in",
+    "intouch_auth": "Basic YWJib3R0cGh0ZW1wcGFnZTo4NWE0NDQ3YTNiNDM4ZmJiNmUzM2U1YzA0Mjg0NjBkMw=="
+  },
+  "TH": {
+    "isprint_base_url": "https://ar2demo.accessreal.com",
+    "isprint_app_key": "SecretKey_9d7e98e247e04ce5840fd326bb7d09ee",
+    "isprint_app_id": "6849dbd22ad740f3856b8c3abf2b35bd",
+    "capillary_brand": "ABBOTTALLDEMO",
+    "capillary_base_url": "https://apac-apigateway.capillarytech.com",
+    "capillary_url": "https://apac.api.capillarytech.com",
+    "till_id": "abbottdemo",
+    "till_password": "85a4447a3b438fbb6e33e5c0428460d3",
+    "intouch": "https://intouch.capillary.co.in",
+    "series_list": "9332"
+  }
+}

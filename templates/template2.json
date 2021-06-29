@@ -1,0 +1,48 @@
+[
+  {
+    "Key": "TelPhone",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": " ",
+    "end_delimiter": "GST",
+    "foundkeyfor": "ph: "
+  },
+  {
+    "Key": "Gst",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "GST: ",
+    "end_delimiter": "Inv.",
+    "foundkeyfor": "gst "
+  },
+  {
+    "Key": "Invoice No",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Inv. No:",
+    "end_delimiter": " ",
+    "foundkeyfor": "inv"
+  },
+  {
+    "Key": "Date",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": " ",
+    "end_delimiter": "Dine-In"
+  },
+  {
+    "Key": "products",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Total",
+    "end_delimiter": "Net Total"
+  },
+
+  {
+    "Key": "Bottle amount",
+    "line_no_start": null,
+    "line_no_end": null,
+    "start_delimiter": "Total",
+    "end_delimiter": "Net"
+  }
+]
